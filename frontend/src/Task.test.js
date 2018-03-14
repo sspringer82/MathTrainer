@@ -2,15 +2,9 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Task } from './Task';
+import { getTextFromStyledByClassName } from './helpers/getTextFromStyledByClassName';
 
 Enzyme.configure({ adapter: new Adapter() });
-
-function getTextFromStyledByClassName(wrapper, className) {
-  return wrapper
-    .find(`.${className}`)
-    .children()
-    .text();
-}
 
 describe('<Task />', () => {
   test('it should display 1 + 1 = 2', () => {
