@@ -12,4 +12,12 @@ describe('<Trainer />', () => {
     wrapper.find('button[value="4"]').simulate('click');
     expect(getTextFromStyledByClassName(wrapper, 'result')).toBe('4');
   });
+
+  test('should delete the last digit of the result if del is pressed', () => {
+    const wrapper = mount(<Trainer />);
+    wrapper.find('button[value="4"]').simulate('click');
+    wrapper.find('button[value="4"]').simulate('click');
+    wrapper.find('button[value="del"]').simulate('click');
+    expect(getTextFromStyledByClassName(wrapper, 'result')).toBe('4');
+  });
 });

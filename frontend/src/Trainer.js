@@ -23,12 +23,19 @@ export class Trainer extends React.Component {
 
   handleClick(value) {
     this.setState(prevState => {
-      return {
-        ...prevState,
-        result: parseInt(
+      let result;
+      if (value === 'del') {
+        result = Math.floor(prevState.result / 10);
+      } else {
+        result = parseInt(
           '' + (prevState.result !== null ? prevState.result : '') + value,
           10,
-        ),
+        );
+      }
+
+      return {
+        ...prevState,
+        result,
       };
     });
   }
