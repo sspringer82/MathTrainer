@@ -12,12 +12,27 @@ export class Trainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      operation: {
+        op1: 1,
+        op2: 1,
+        operation: '+',
+        result: 2,
+      },
       result: null,
       state: NOT_CHECKED,
     };
   }
 
+  componentWillMount() {
+    this.createOperation();
+  }
+
   render() {
+    const operands = [
+      this.state.operation.op1,
+      this.state.operation.operation,
+      this.state.operation.op2,
+    ];
     return (
       <div>
         <Task
@@ -57,11 +72,29 @@ export class Trainer extends React.Component {
   }
 
   check() {
-    const result = 1 + 1;
     let state = CHECKED_WRONG;
-    if (result === this.state.result) {
+    if (this.state.operation.result === this.state.result) {
       state = CHECKED_CORRECT;
     }
     this.setState(prevState => ({ ...prevState, state }));
+    setTimeout(() => this.reset(), 1000);
+  }
+
+  reset() {
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        result: '',
+        operation: this.createOperation(),
+        state: NOT_CHECKED,
+      };
+    });
+  }
+
+  createOperation() {
+    const op1 = Math.floor(Math.random() * 10);
+    const op2 = Math.floor(Math.random() * 10);
+    const result = op1 + op2;
+    return { op1, op2, operation: '+', result };
   }
 }
