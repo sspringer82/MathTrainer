@@ -39,6 +39,6 @@ Task.propTypes = {
   operands: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   ),
-  result: PropTypes.number,
+  result: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   state: PropTypes.number,
 };
