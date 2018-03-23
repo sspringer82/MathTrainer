@@ -35,7 +35,8 @@ export class Trainer extends React.Component {
       let result = prevState.result;
       switch (value) {
         case 'del':
-          result = Math.floor(prevState.result / 10);
+          result =
+            prevState.result < 10 ? '' : Math.floor(prevState.result / 10);
           break;
         case 'ok':
           this.check();

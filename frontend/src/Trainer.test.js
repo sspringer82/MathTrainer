@@ -20,4 +20,11 @@ describe('<Trainer />', () => {
     wrapper.find('button[value="del"]').simulate('click');
     expect(getTextFromStyledByClassName(wrapper, 'result')).toBe('4');
   });
+
+  test('should delete all digits', () => {
+    const wrapper = mount(<Trainer />);
+    wrapper.find('button[value="4"]').simulate('click');
+    wrapper.find('button[value="del"]').simulate('click');
+    expect(getTextFromStyledByClassName(wrapper, 'result')).toBe('');
+  });
 });
