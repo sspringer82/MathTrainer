@@ -23,9 +23,9 @@ export const Keyboard = ({ handleClick }) => {
       <button value="1">1</button>
       <button value="2">2</button>
       <button value="3">3</button>
-      <button value="del">DEL</button>
+      <button value="Backspace">DEL</button>
       <button value="0">0</button>
-      <button value="ok">OK</button>
+      <button value="Enter">OK</button>
     </Container>
   );
 };
